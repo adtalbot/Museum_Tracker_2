@@ -1,0 +1,16 @@
+<h1>Museums</h1>
+
+<% @museums.each() do |museum| %>
+<ul>
+  <li><a href='/museums/<%= museum.id() %>'><%= museum.name() %></a></li>
+</ul>
+<% end %>
+
+<p>Add a Museum:</p>
+
+<form action='/museums' method='post'>
+  <div class='form-group'>
+    <input id='name' name='name' type='text' placeholder='Enter Name'>
+  </div>
+  <button type='submit' class='btn btn-success'>Add</button>
+</form>

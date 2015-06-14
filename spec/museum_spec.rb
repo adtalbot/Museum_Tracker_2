@@ -63,4 +63,16 @@ describe(Museum) do
       expect(Museum.all()).to(eq([test_museum2]))
     end
   end
+  
+  describe('#artworks') do
+    it('returns an array of artwork for that museum') do
+      test_museum = Museum.new({:name => 'Portland Museum', :id => nil})
+      test_museum.save()
+      test_artwork = Artwork.new({:name => 'Painting', :museum_id => test_museum.id()})
+      test_artwork.save()
+      test_artwork2 = Artwork.new({:name => 'Sculpture', :museum_id => test_museum.id()})
+      test_artwork2.save()
+      expect(test_museum.artworks()).to(eq([test_artwork, test_artwork2]))
+    end
+  end
 end
