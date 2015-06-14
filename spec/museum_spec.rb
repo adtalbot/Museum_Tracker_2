@@ -10,4 +10,10 @@ describe(Museum) do
       test_museum = Museum.new({:name => 'Portland Museum', :id => nil})
     end
   end
+  
+  describe('.all') do
+    it('is empty at first') do
+      expect(Museum.all()).to(eq([]))
+    end
+  end
 end
