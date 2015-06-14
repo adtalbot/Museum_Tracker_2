@@ -42,4 +42,24 @@ describe(Museum) do
       expect(Museum.find(test_museum.id())).to(eq(test_museum))
     end
   end
+  
+  describe('#update') do
+    it('updates a museum in the database') do
+      test_museum = Museum.new({:name => 'Portland Museum', :id => nil})
+      test_museum.save()
+      test_museum.update({:name => 'Chicago Museum'})
+      expect(test_museum.name()).to(eq('Chicago Museum'))
+    end
+  end
+  
+  describe('#delete') do
+    it('deletes a museums from the database') do
+      test_museum = Museum.new({:name => 'Portland Museum', :id => nil})
+      test_museum.save()
+      test_museum2 = Museum.new({:name => 'Chicago Museum', :id => nil})
+      test_museum2.save()
+      test_museum.delete()
+      expect(Museum.all()).to(eq([test_museum2]))
+    end
+  end
 end
