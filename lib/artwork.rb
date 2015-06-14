@@ -30,4 +30,8 @@ class Artwork
     @museum_id = self.museum_id()
     DB.exec("UPDATE artworks SET name = '#{@name}' WHERE museum_id = #{@museum_id};")
   end
+  
+  define_method(:delete) do
+    DB.exec("DELETE FROM artworks WHERE museum_id = #{self.museum_id()};")
+  end
 end

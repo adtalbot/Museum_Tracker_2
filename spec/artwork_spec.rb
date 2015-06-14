@@ -33,16 +33,6 @@ describe(Artwork) do
       expect(test_artwork).to(eq(test_artwork2))
     end
   end
-    
-#   describe('.find') do
-#     it('returns artwork by its museum id') do
-#       test_artwork = Artwork.new({:name => 'Painting', :museum_id => 1})
-#       test_artwork.save()
-#       test_artwork2 = Artwork.new({:name => 'Sculpture', :museum_id => 2})
-#       test_artwork2.save()
-#       expect(Artwork.find(test_artwork.museum_id()).to(eq(test_artwork)))
-#     end
-#   end
   
   describe('#update') do 
     it('updates artwork in the database') do
@@ -51,5 +41,16 @@ describe(Artwork) do
       test_artwork.update({:name => 'Sculpture'})
       expect(test_artwork.name()).to(eq('Sculpture'))
     end
-  end                                                                                                                                    
+  end    
+  
+  describe('#delete') do
+    it('deletes artwork from the database') do
+      test_artwork = Artwork.new({:name => 'Painting', :museum_id => 1})
+      test_artwork.save()
+      test_artwork2 = Artwork.new({:name => 'Sculpture', :museum_id => 2})
+      test_artwork2.save()
+      test_artwork2.delete()
+      expect(Artwork.all()).to(eq([test_artwork]))
+    end
+  end
 end
