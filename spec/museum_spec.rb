@@ -7,7 +7,8 @@ describe(Museum) do
       expect(test_museum).to(be_an_instance_of(Museum))
     end
     it('initializes each instance of museum with a database id') do
-      test_museum = Museum.new({:name => 'Portland Museum', :id => nil})
+      test_museum = Museum.new({:name => 'Portland Museum', :id => 1})
+      expect(test_museum.id()).to(be_an_instance_of(Fixnum))
     end
   end
   
