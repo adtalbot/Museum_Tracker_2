@@ -16,4 +16,18 @@ class Artwork
     end
     artworks
   end
+  
+  define_method(:save) do
+    DB.exec("INSERT INTO artworks (name, museum_id) VALUES ('#{@name}', #{@museum_id});")
+  end
+  
+  define_method(:==) do |another_artwork|
+    self.name().==(another_artwork.name()).&(self.museum_id().==(another_artwork.museum_id()))
+  end
+  
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @museum_id = self.museum_id()
+    DB.exec("UPDATE artworks SET name = '#{@name}' WHERE museum_id = #{@museum_id};")
+  end
 end
