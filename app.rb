@@ -16,6 +16,13 @@ get('/museums') do
   erb(:museums)
 end
 
+post('/museums') do
+  name = params.fetch('name')
+  museum = Museum.new({:name => name, :id => nil})
+  museum.save()
+  redirect back
+end
+
 get('/artworks') do
   @artworks = Artwork.all()
   erb(:artworks)
@@ -39,5 +46,31 @@ get('/museums/:id') do
   @museum = Museum.find(params.fetch('id').to_i())
   erb(:museum)
 end
+
+get('/museums/:id/edit') do
+  @museum = Museum.find(params.fetch('id').to_i())
+  erb(:museum_edit)
+end
+
+patch('/museums/:id') do
+  name = params.fetch('name')
+  @museum = Museum.find(params.fetch('id').to_i())
+  @museum.update({:name => name})
+  @museums = Museum.all()
+  erb(:museum)
+end
+
+delete('/museums/:id') do
+  @museum = Museum.find(params.fetch('id').to_i())
+  @museum.delete()
+  @museums = Museum.all()
+  erb(:index)
+end
+
+get('/artworks/:id') do
+  @artwork = Artwork.find(params.fetch('id').to_i())
+  erb(:artwork)
+end
+  
 
 
