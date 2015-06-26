@@ -67,10 +67,6 @@ delete('/museums/:id') do
   erb(:index)
 end
 
-get('/artworks/:id') do
-  @artwork = Artwork.find(params.fetch('id').to_i())
-  erb(:artwork)
-end
   
 
 
