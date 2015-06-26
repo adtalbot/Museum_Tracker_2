@@ -9,7 +9,7 @@ describe('the museum tracker website path', {:type => :feature}) do
     expect(page).to(have_content('Click to see all Museums'))
     expect(page).to(have_content('Click to see all Artwork'))
   end
-  it('shows a list of all museums and allows you to add a museum') do
+  it('shows a list of all museums and allows you to add a museum and artwork') do
     visit('/museums')
     fill_in('name', {:with => 'Portland Museum'})
     click_button('Add')
@@ -18,6 +18,6 @@ describe('the museum tracker website path', {:type => :feature}) do
     fill_in('name', {:with => 'Painting'})
     click_button('Add')
     expect(page).to(have_content('Painting'))
-  end
+  end   
 end
 
