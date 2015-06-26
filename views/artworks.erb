@@ -1,0 +1,8 @@
+<h1>Artwork</h1>
+
+<% @artworks.each() do |artwork| %>
+<ul>
+  <li><a href='/artworks/<%= artwork.museum_id() %>'><%= artwork.name() %></a></li>
+</ul>
+<% end %>
+    

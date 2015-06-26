@@ -1,0 +1,23 @@
+<h1><%= @museum.name() %></h1>
+
+<% if @museum.artworks().any?() %>
+<p>Here is all of the artwork at this museum:</p>
+<ul> 
+  <% @museum.artworks().each() do |artwork| %>
+  <li><%= artwork.name() %>
+    <% end %>
+</ul>
+<% else %>
+<p>There is no artwork a this museum.</p>
+<% end %>
+
+<h3>Add artwork to <%= @museum.name() %></h3>
+
+<form action='/museum' method='post'>
+  <input id='museum_id' name ='museum_id' type='hidden' value='<%= @museum.id() %>'>
+  
+  <input id='name' name='name' type='text'>
+  <button type='submit' class='btn btn-success'>Add</button>
+</form>
+
+  
