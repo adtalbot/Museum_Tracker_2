@@ -14,6 +14,10 @@ describe('the museum tracker website path', {:type => :feature}) do
     fill_in('name', {:with => 'Portland Museum'})
     click_button('Add')
     expect(page).to(have_content('Portland Museum'))
+    click_link('Portland Museum')
+    fill_in('name', {:with => 'Painting'})
+    click_button('Add')
+    expect(page).to(have_content('Painting'))
   end
 end
 
